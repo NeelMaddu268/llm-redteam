@@ -1,0 +1,14 @@
+# Cohesive dark theme for the red-team dashboard.
+# Colors follow the data-viz reference palette (dark surfaces + blue accent).
+[theme]
+base = "dark"
+primaryColor = "#3987e5"
+backgroundColor = "#0d0d0d"
+secondaryBackgroundColor = "#1a1a1c"
+textColor = "#e7e7e3"
+font = "sans serif"
+baseRadius = "0.7rem"
+borderColor = "#2c2c2a"
+
+[server]
+headless = true

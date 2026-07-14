@@ -1,0 +1,18 @@
+# Core dependencies — everything the tool needs to run end to end
+# against a local Ollama model. No API key required.
+ollama>=0.3.0        # local model calls (requires Ollama running: https://ollama.com)
+pydantic>=2.6        # payload/response/verdict schema validation
+rich>=13.7           # CLI tables and progress output
+pyyaml>=6.0          # payload definitions live in YAML
+streamlit>=1.31      # dashboard (redteam dashboard / streamlit run dashboard/app.py)
+altair>=5.0          # charts in the dashboard
+
+# Test dependency
+pytest>=8.0
+
+# ---------------------------------------------------------------------------
+# OPTIONAL: Anthropic API target + judge (see README "Optional: add Claude").
+# Not required for the core pipeline — it is imported lazily and only used when
+# REDTEAM_ENABLE_ANTHROPIC=1 and ANTHROPIC_API_KEY are both set. Install with:
+#     pip install anthropic
+# anthropic>=0.40
