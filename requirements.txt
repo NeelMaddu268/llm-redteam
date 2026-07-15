@@ -6,6 +6,7 @@ rich>=13.7           # CLI tables and progress output
 pyyaml>=6.0          # payload definitions live in YAML
 streamlit>=1.31      # dashboard (redteam dashboard / streamlit run dashboard/app.py)
 altair>=5.0          # charts in the dashboard
+pandas>=2.0          # dataframes in the dashboard
 
 # Test dependency
 pytest>=8.0
