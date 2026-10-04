@@ -222,7 +222,7 @@ def rate_bar_chart(buckets, axis_label: str, height_step: int = 40) -> alt.Layer
                  alt.Tooltip("succeeded:Q", title="Breakthroughs"),
                  alt.Tooltip("evaluated:Q", title="Evaluated")],
     )
-    labels = base.mark_text(align="left", dx=6, fontSize=12, fontWeight="bold").encode(
+    labels = base.mark_text(align="left", dx=6, fontSize=12, fontWeight="bold", color="#e7e7e3").encode(
         x=alt.X("rate:Q", scale=alt.Scale(domain=[0, 1])),
         text=alt.Text("rate:Q", format=".0%"),
     )
