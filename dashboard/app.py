@@ -33,6 +33,7 @@ from redteam.runner import load_results  # noqa: E402
 from redteam.schemas import Outcome  # noqa: E402
 
 RESULTS_DIR = PROJECT_ROOT / "results"
+DEFAULT_SAMPLE = "three-way-model-comparison.jsonl"  # what the hosted demo opens on
 
 st.set_page_config(page_title="RedTeam · LLM injection eval", page_icon="🛡️", layout="wide")
 
@@ -245,7 +246,9 @@ if not run_files:
     st.warning("No results found yet. Generate some with:\n\n```\nredteam run\n```")
     st.stop()
 
-choice = st.sidebar.selectbox("Results file", run_files, format_func=lambda p: p.name)
+file_names = [p.name for p in run_files]
+file_idx = file_names.index(DEFAULT_SAMPLE) if DEFAULT_SAMPLE in file_names else 0
+choice = st.sidebar.selectbox("Results file", run_files, index=file_idx, format_func=lambda p: p.name)
 results = load_results_cached(str(choice), choice.stat().st_mtime)
 
 classifiers = sorted({v.classifier for r in results for v in r.verdicts})
