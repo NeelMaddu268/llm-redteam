@@ -286,14 +286,14 @@ hero_accent = BAND_HEX[band(rate)]
 
 st.markdown(
     f'<div class="rt-head">'
-    f'<div class="rt-brand">{SHIELD}<h1 class="rt-title">Red<span>Team</span> — LLM injection eval</h1></div>'
+    f'<div class="rt-brand">{SHIELD}<h1 class="rt-title">Red<span>Team</span> · LLM injection eval</h1></div>'
     f'<div class="rt-meta"><span class="rt-tag">scored by</span> {esc(classifier)}<br>'
     f'{esc(choice.name)}</div></div>',
     unsafe_allow_html=True,
 )
 st.markdown(
     '<div class="rt-lead">Testing AI systems against a library of prompt-injection &amp; jailbreak '
-    'attacks — capturing responses, classifying whether each attack broke through, and comparing '
+    'attacks. It captures each response, classifies whether the attack broke through, and compares '
     'vulnerability across models.</div>',
     unsafe_allow_html=True,
 )
@@ -382,7 +382,7 @@ if worst:
         unsafe_allow_html=True,
     )
 else:
-    st.info("No successful breakthroughs under this classifier — the target held.")
+    st.info("No successful breakthroughs under this classifier. The target held.")
 
 # ---------------------------------------------------------------------------
 # Results explorer
@@ -423,10 +423,10 @@ if not examples:
     st.info("No successful attacks to show for this classifier.")
 for r in examples:
     with st.expander(f"● {r.payload.id}   ·   {r.run.target}   ·   {r.run.category.value}"):
-        st.markdown(f"**Attack goal** — {r.payload.description}")
+        st.markdown(f"**Attack goal:** {r.payload.description}")
         st.markdown("**Prompt sent**")
         st.code(r.run.prompt_sent, language="text")
         st.markdown("**Model response**")
         st.code(r.run.response or "(empty)", language="text")
         for v in r.verdicts:
-            st.markdown(f"- `{v.classifier}` → **{v.outcome.value}** — {v.justification}")
+            st.markdown(f"- `{v.classifier}` → **{v.outcome.value}**: {v.justification}")
